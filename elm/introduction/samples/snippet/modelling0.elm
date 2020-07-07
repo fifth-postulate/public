@@ -1,0 +1,3 @@
+init : Model
+init =
+    "World

@@ -1,0 +1,3 @@
+init : String
+init =
+    "World"

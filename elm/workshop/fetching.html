@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Http Get - Elm Workshop</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="goal.html"><strong aria-hidden="true">1.</strong> Goal</a></li><li><a href="installation.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><a href="first.html"><strong aria-hidden="true">3.</strong> First Elm project</a></li><li><a href="workshop.html"><strong aria-hidden="true">4.</strong> Workshop.elm</a></li><li><a href="reactor.html"><strong aria-hidden="true">5.</strong> reactor</a></li><li><a href="architecture.html"><strong aria-hidden="true">6.</strong> Elm Architecture</a></li><li><a href="model.html"><strong aria-hidden="true">7.</strong> Model</a></li><li><a href="view.html"><strong aria-hidden="true">8.</strong> View</a></li><li><a href="package.html"><strong aria-hidden="true">9.</strong> Package</a></li><li><a href="update.html"><strong aria-hidden="true">10.</strong> Updating Model</a></li><li><a href="sortable.html"><strong aria-hidden="true">11.</strong> Sortable Table</a></li><li><a href="decoder.html"><strong aria-hidden="true">12.</strong> Decoder</a></li><li><a href="fetching.html" class="active"><strong aria-hidden="true">13.</strong> Http Get</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Elm Workshop</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#getting-data" id="getting-data">Getting Data</a></h1>
+<p>We now would like to fetch some real data over the network. We could fetch it directly from the European Centre for Disease Prevention and Control (ECDC), but we don't want to hammer their servers.</p>
+<p>Remember that you downloaded a dataset in the section where we first modeled our data. We will serve from the that JSON from the reactor instead.</p>
+<h2><a class="header" href="#elmhttp" id="elmhttp"><code>elm/http</code></a></h2>
+<p>Before we can make a http call we need to install <code>elm/http</code>. </p>
+<h2><a class="header" href="#command" id="command">Command</a></h2>
+<p>This allows us to make a command to fetch our data set. Make sure that it is found at the root of your workshop project.</p>
+<p>In order to be able to make a command we need to upgrade to <code>Browser.element</code>.</p>
+<h2><a class="header" href="#message" id="message">Message</a></h2>
+<p>When we command for our data set, things can go wrong. The network is unreliable. The Elm Runtime should be able to tell us that information. We create a message for that occasion.</p>
+<p>I suggest <code>Received (Result Http.Error (List CovidRecord))</code>. </p>
+<h2><a class="header" href="#httpget" id="httpget"><code>Http.get</code></a></h2>
+<p>Next we use <code>Http.get</code> to create a command to fetch the data.</p>
+<p><code>Http.get</code> needs a record with two fields</p>
+<h3><a class="header" href="#url" id="url"><code>url</code></a></h3>
+<p>Where should the data be fetch from. This points the GET command in the right direction.</p>
+<p><code>/covid.json</code> in my case, but depending on what you could your data set, this could be different.</p>
+<h3><a class="header" href="#expect" id="expect"><code>expect</code></a></h3>
+<p>What to expect once the data is received.</p>
+<p>We are expecting JSON, so the <code>Http.expectJson</code> function is a good choice. The signature is</p>
+<pre><code class="language-elm">Http.expectJson: (Result Http.Error data -&gt; msg) -&gt; Decoder data -&gt; Expect msg
+</code></pre>
+<p>This is where our new message comes in. Remember that type options are constructors, i.e. function that take its arguments and produce a message.</p>
+<p><code>Htpp.expectJson</code> also needs a decoder. We already have a decoder for <code>CovidRecord</code>. A decoder for <code>List CovidRecord</code> is not far off.</p>
+<pre><code class="language-elm">recordsDecoder: Decode.Decoder (List CovidRecord)
+recordsDecoder =
+    Decode.field &quot;records&quot; (Decode.list (covidRecordDecoder))
+</code></pre>
+<p>And that is it.</p>
+<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<ol>
+<li>Install <code>elm/http</code>.</li>
+<li>Upgrade from <code>Browser.sandbox</code> to <code>Browser.element</code>.</li>
+<li>Extend <code>Message</code> and handle it in <code>update</code>.</li>
+<li>Make a <code>Http.get</code> call.</li>
+<li>Do proper error handling.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="decoder.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="decoder.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

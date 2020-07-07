@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sortable Table - Elm Workshop</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="goal.html"><strong aria-hidden="true">1.</strong> Goal</a></li><li><a href="installation.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><a href="first.html"><strong aria-hidden="true">3.</strong> First Elm project</a></li><li><a href="workshop.html"><strong aria-hidden="true">4.</strong> Workshop.elm</a></li><li><a href="reactor.html"><strong aria-hidden="true">5.</strong> reactor</a></li><li><a href="architecture.html"><strong aria-hidden="true">6.</strong> Elm Architecture</a></li><li><a href="model.html"><strong aria-hidden="true">7.</strong> Model</a></li><li><a href="view.html"><strong aria-hidden="true">8.</strong> View</a></li><li><a href="package.html"><strong aria-hidden="true">9.</strong> Package</a></li><li><a href="update.html"><strong aria-hidden="true">10.</strong> Updating Model</a></li><li><a href="sortable.html" class="active"><strong aria-hidden="true">11.</strong> Sortable Table</a></li><li><a href="decoder.html"><strong aria-hidden="true">12.</strong> Decoder</a></li><li><a href="fetching.html"><strong aria-hidden="true">13.</strong> Http Get</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Elm Workshop</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#sortable-table" id="sortable-table">Sortable Table</a></h1>
+<p>We are now ready to start using sortable tables. We only need to update <code>viewRecords</code>.</p>
+<p><code>viewRecords</code> can delegate the viewing of the records to <code>Table.view</code>. It's signature is</p>
+<pre><code class="language-elm">Table.view : Table.Config data msg -&gt; Table.State -&gt; List data -&gt; Html msg
+</code></pre>
+<p><code>Table.State</code> and the <code>List data</code> we already have. So let's look at configuring our table.</p>
+<h2><a class="header" href="#tableconfig" id="tableconfig"><code>Table.Config</code></a></h2>
+<p>A <code>Table.Config</code> is created with <a href="https://package.elm-lang.org/packages/NoRedInk/elm-sortable-table/latest/Table#config"><code>Table.config</code></a>. It accepts a record with three fields <code>columns</code>, <code>toMsg</code> and <code>toId</code>.</p>
+<p>We will look at each of those in turn.</p>
+<h3><a class="header" href="#columns" id="columns"><code>columns</code></a></h3>
+<p>This fields configures which columns to show in the table. It is a <code>List (Table.Column data msg)</code>.</p>
+<p>There are two convience functions that can create <code>Table.Column</code> that are of interest to us: <code>Table.stringColumn</code> and <code>Table.intColumn</code>.</p>
+<p>Their signatures are </p>
+<pre><code class="language-elm">stringColumn : String -&gt; (data -&gt; String) -&gt; Column data msg
+intColumn : String -&gt; (data -&gt; Int) -&gt; Column data msg
+</code></pre>
+<p>The String argument will be the header of the column as well as the key in the sorting state.</p>
+<p>The next argument is a function type. It determines how to retrieve the value to show in that column from the data. For example, if you wanted to show the region one could pass the following function</p>
+<pre><code class="language-elm">region : CovidRecord -&gt; String
+region { region } =
+    region
+</code></pre>
+<p>Luckily there is a shorthand in Elm. For each definition of a record type there is a corresponding accessor function. In our example that would be <code>.region</code>.</p>
+<p>So to create column to show the cases of a record on would use</p>
+<pre><code class="language-elm">Table.inColumn &quot;Cases&quot; .cases
+</code></pre>
+<h2><a class="header" href="#tomsg" id="tomsg"><code>toMsg</code></a></h2>
+<p>We extended our Model with the current <code>Table.State</code>. In order to be able to change that <code>Table.State</code>, the Elm architecture prescribes that we should send a message</p>
+<p>The <code>toMsg</code> field of the <code>Table.config</code> argument allows you to specify that.</p>
+<p>We haven't introduced messages yet, so now is a good time to do so.</p>
+<pre><code class="language-elm">type Message
+    = SetTableState Table.State
+</code></pre>
+<p>Notice that <code>SetTableState</code> is a function, called a constructor, takes an <code>Table.State</code> and returns a message. It nicely fits the <code>toMsg</code> signature.</p>
+<h2><a class="header" href="#toid" id="toid"><code>toId</code></a></h2>
+<p>Updating the DOM can be relatively slow, especially when huge amounts of data are changed. Elm can speeds things up with a little help. For that Elm needs to identify rows of our table.</p>
+<p>Since each row corresponds with a single record, we need to provide a function that produces a unique identifier. One way could be</p>
+<pre><code class="language-elm">covidRecordId : CovidRecord -&gt; String
+covidRecordId record =
+    record.region
+    ++ (String.fromInt &lt;| record.year)
+    ++ (String.fromInt &lt;| record.month)
+    ++ (String.fromInt &lt;| record.day)
+</code></pre>
+<p>For more information see <a href="https://package.elm-lang.org/packages/elm/html/latest/Html-Keyed"><code>Html.Keyed</code></a></p>
+<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<ol>
+<li>Create a <code>Message</code> type with a <code>SetTableState Table.State</code> entry.</li>
+<li>Extent the update function with the new message entry. Store the new <code>tableState</code> in the model.</li>
+<li>Use <code>Table.view</code> in <code>viewRecords</code>. Note that the signature can be more concrete now.</li>
+<li>Add some more records and enjoy your sortable table.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="update.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="decoder.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="update.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="decoder.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

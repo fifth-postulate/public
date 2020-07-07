@@ -1,0 +1,565 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Elm Workshop</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="goal.html"><strong aria-hidden="true">1.</strong> Goal</a></li><li><a href="installation.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><a href="first.html"><strong aria-hidden="true">3.</strong> First Elm project</a></li><li><a href="workshop.html"><strong aria-hidden="true">4.</strong> Workshop.elm</a></li><li><a href="reactor.html"><strong aria-hidden="true">5.</strong> reactor</a></li><li><a href="architecture.html"><strong aria-hidden="true">6.</strong> Elm Architecture</a></li><li><a href="model.html"><strong aria-hidden="true">7.</strong> Model</a></li><li><a href="view.html"><strong aria-hidden="true">8.</strong> View</a></li><li><a href="package.html"><strong aria-hidden="true">9.</strong> Package</a></li><li><a href="update.html"><strong aria-hidden="true">10.</strong> Updating Model</a></li><li><a href="sortable.html"><strong aria-hidden="true">11.</strong> Sortable Table</a></li><li><a href="decoder.html"><strong aria-hidden="true">12.</strong> Decoder</a></li><li><a href="fetching.html"><strong aria-hidden="true">13.</strong> Http Get</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Elm Workshop</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#goal" id="goal">Goal</a></h1>
+<p>In this workshop you familiarize yourself with Elm.</p>
+<p>We will work project that </p>
+<h1><a class="header" href="#installation" id="installation">Installation</a></h1>
+<p>For this workshop we are going to need Elm. The <a href="https://guide.elm-lang.org/install/elm.html">installation page</a> has clear instructions for each platform.</p>
+<h2><a class="header" href="#extra-mile" id="extra-mile">Extra Mile</a></h2>
+<p>We will want to go the extra mile and install the following related tools as well</p>
+<ul>
+<li><code>elm-format</code>: this will format your code according to <strong>the</strong> Elm style.</li>
+<li><code>elm-test</code>: allows to test Elm code </li>
+</ul>
+<h3><a class="header" href="#elm-format" id="elm-format"><code>elm-format</code></a></h3>
+<p>The <a href="https://github.com/avh4/elm-format#installation-">elm-format repository</a> has instructions how to install <code>elm-format</code>.</p>
+<h3><a class="header" href="#elm-test" id="elm-test"><code>elm-test</code></a></h3>
+<p>A description <a href="https://github.com/elm-explorations/test#running-tests-locally">how to install</a> <code>elm-test</code> can be found on it's repository README.</p>
+<h1><a class="header" href="#first-elm-project" id="first-elm-project">First Elm project</a></h1>
+<p>With the <code>elm</code> command installed we can use it to create our first Elm project. Create a directory could <code>workshop</code>, enter it and execute:</p>
+<pre><code class="language-sh">elm init
+</code></pre>
+<p>This creates the following files</p>
+<pre><code class="language-plain">.
+├── elm.json
+└── src
+</code></pre>
+<h2><a class="header" href="#elmjson" id="elmjson"><code>elm.json</code></a></h2>
+<p>the <code>elm.json</code> describes your Elm project and it's dependencies. The content is usually manipulated with the <code>elm</code> command, so no need to change it by hand.</p>
+<h2><a class="header" href="#src" id="src"><code>src</code></a></h2>
+<p>The source directory is where the <code>Elm</code> files live. It is empty now. Let's change that.</p>
+<h1><a class="header" href="#workshopelm" id="workshopelm"><code>Workshop.elm</code></a></h1>
+<p>Fire up your favourite editor and open the <code>workshop</code> folder.</p>
+<p>In the <code>src</code> directory create a file <code>Workshop.elm</code> with the following contents</p>
+<pre><code class="language-elm">module Workshop exposing (..)
+
+import Html
+
+
+main =
+    Html.text &quot;Hello, World!&quot;
+</code></pre>
+<p>That is it! This is your first Elm file.</p>
+<h1><a class="header" href="#elm-reactor" id="elm-reactor"><code>elm reactor</code></a></h1>
+<p>Elm is compiled down to JavaScript. In this form <code>Workshop.elm</code> is inert, we can't even see what it would look like if it were compiled.</p>
+<p>There is a subcommand that will help us. Open a terminal inside the <code>workshop</code> directory and run</p>
+<pre><code class="language-sh">elm reactor
+</code></pre>
+<p>This will start an server that knows about Elm.</p>
+<p>Navigate to <a href="http://localhost:8000"><code>http://localhost:8000</code></a>. It displays the <code>workshop</code> directory. Enter the <code>src</code> directory in the browser and open <code>Workshop.elm</code>. You will be greeted by Elm.</p>
+<p>You can leave the reactor running. When you refresh the page it will recompile <code>Workshop.elm</code> and serve you the updated version.</p>
+<h1><a class="header" href="#elm-architecture" id="elm-architecture">Elm Architecture</a></h1>
+<p>The <em>Elm Architecture</em> is the way that Elm applications are organized.</p>
+<p>It boils down to the following parts</p>
+<ul>
+<li><strong>Model</strong> — the state of your application</li>
+<li><strong>View</strong> — a way to turn your state into HTML</li>
+<li><strong>Update</strong> — a way to update your state based on messages</li>
+</ul>
+<p>The <a href="https://guide.elm-lang.org/architecture/">Elm guide</a> has a great exposition on it, so read that before we proceed.</p>
+<p>We can start with the following skeleton, which we will refine along the way.</p>
+<pre><code class="language-elm">module Workshop exposing (..)
+
+import Browser
+import Html
+
+
+main =
+    Browser.sandbox
+        { init = init
+        , update = update
+        , view = view
+        }
+
+
+type alias Model =
+    String
+
+
+init : Model
+init =
+    &quot;World&quot;
+
+
+view : Model -&gt; Html.Html msg
+view model =
+    Html.text (&quot;Hello, &quot; ++ model ++ &quot;!&quot;)
+
+
+update : msg -&gt; Model -&gt; Model
+update _ model =
+   model
+</code></pre>
+<h1><a class="header" href="#model" id="model">Model</a></h1>
+<p>For this workshop we are going to look at a <a href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">COVID-19 data</a>. Once you downloaded the dataset in JSON format you will notice that it contains <em>records</em> with the following information</p>
+<pre><code class="language-json">      {
+         &quot;dateRep&quot; : &quot;06/07/2020&quot;,
+         &quot;day&quot; : &quot;06&quot;,
+         &quot;month&quot; : &quot;07&quot;,
+         &quot;year&quot; : &quot;2020&quot;,
+         &quot;cases&quot; : 279,
+         &quot;deaths&quot; : 38,
+         &quot;countriesAndTerritories&quot; : &quot;Afghanistan&quot;,
+         &quot;geoId&quot; : &quot;AF&quot;,
+         &quot;countryterritoryCode&quot; : &quot;AFG&quot;,
+         &quot;popData2019&quot; : 38041757,
+         &quot;continentExp&quot; : &quot;Asia&quot;
+      }
+</code></pre>
+<p>We will only be interested in the fields: <code>day</code>, <code>month</code>, <code>year</code>, <code>cases</code>, <code>deaths</code> and <code>countriesAndTerritories</code>.</p>
+<p>Create a type alias <code>CovidRecord</code> in <code>Workshop.elm</code></p>
+<pre><code class="language-elm">type alias CovidRecord =
+    { day : Int
+    , month : Int
+    , year : Int
+    , cases : Int
+    , deaths : Int
+    , region : String
+    }
+</code></pre>
+<p>We shortened <code>countriesAndTerritories</code> to <code>region</code>.</p>
+<p>We have modeled records in our data. This is different from our model though. Our model also includes state of our application. </p>
+<p>To have something to work with, we will create a model that contains a single record.</p>
+<pre><code class="language-elm">init : Model
+init =
+    let
+        record =
+            { day = 6
+            , month = 7
+            , year = 2020
+            , cases = 279
+            , deaths = 38
+            , region = &quot;Afghanistan&quot;
+            }
+    in
+    { record = record }
+</code></pre>
+<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<ol>
+<li>The view function is broken. Take a look at the <code>Workshop</code> application to see the error message. Change the view function to show a hardcoded text.</li>
+</ol>
+<h1><a class="header" href="#view" id="view">View</a></h1>
+<p>We want to view our model in a tabular fashion. Because we know that we are going to view more information, for now we are going to delegate to a function that views a single record.</p>
+<pre><code class="language-elm">view : Model -&gt; Html.Html msg
+view model =
+    viewRecord model.record
+</code></pre>
+<p>We will create the <code>viewRecord</code> next. But it is good to learn something about the <code>Html</code> module.</p>
+<h2><a class="header" href="#html-module" id="html-module"><code>Html</code> module</a></h2>
+<p>The <code>Html</code> module has a driving principle, often seen in Elm. It describes the structure of your view by providing functions. With all most no exceptions for each HTML element there is a corresponding function.</p>
+<p>Each of these functions has the same signature.</p>
+<pre><code class="language-elm">List (Attribute msg) -&gt; List (Html msg) -&gt; Html msg
+</code></pre>
+<p>First comes a list of attributes, next the containing elements and that will produce the HTML node that the function is named after.</p>
+<p>For example, the following HTML</p>
+<pre><code class="language-html">&lt;section&gt;
+    &lt;div&gt;&lt;span&gt;Hello, World!&lt;/span&gt;&lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+<p>would be generated by the following Elm code</p>
+<pre><code class="language-elm">Html.section []
+    [ Html.div [] [ Html.span [] [ Html.text &quot;Hello, World&quot; ] ]
+    ]
+</code></pre>
+<h2><a class="header" href="#htmltext" id="htmltext"><code>Html.text</code></a></h2>
+<p>The <code>Html.text</code> function is needed to transform a <code>String</code> into <code>Html.Html</code>. If you take a look at the signature of <code>Html.text</code></p>
+<pre><code class="language-elm">text: String -&gt; Html msg
+</code></pre>
+<p>You will noticed that it only accepts <code>String</code>. So we need a way to convert our <code>Int</code> values into a <code>String</code>.</p>
+<p>Luckily the <code>String</code> module has just such a method: <code>String.fromInt</code>.</p>
+<h2><a class="header" href="#target" id="target">Target</a></h2>
+<p>We want to output the following HTML in our <code>viewRecord</code> function.</p>
+<pre><code class="language-html">&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;td&gt;region&lt;/td&gt;
+            &lt;td&gt;year&lt;/td&gt;
+            &lt;td&gt;month&lt;/td&gt;
+            &lt;td&gt;day&lt;/td&gt;
+            &lt;td&gt;cases&lt;/td&gt;
+            &lt;td&gt;deaths&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Afghanistan&lt;/td&gt;
+            &lt;td&gt;2020&lt;/td&gt;
+            &lt;td&gt;7&lt;/td&gt;
+            &lt;td&gt;6&lt;/td&gt;
+            &lt;td&gt;279&lt;/td&gt;
+            &lt;td&gt;38&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h2><a class="header" href="#exercises-1" id="exercises-1">Exercises</a></h2>
+<ol>
+<li>Implement the <code>viewRecord</code> function.</li>
+<li>Introcuce a <code>viewRecords</code> function that accepts a <code>List CovidRecord</code>. Change <code>viewRecord</code> to only view a single row of the table. (Hint: take a look at <a href="https://package.elm-lang.org/packages/elm/core/latest/List#map"><code>List.map</code></a>) </li>
+<li>What are the exception to the general rule that for each HTML element or attribute there is a corresponding function?</li>
+</ol>
+<h1><a class="header" href="#package" id="package">Package</a></h1>
+<p>Viewing data in tables, and sorting on different columns, is such a common request that people have created <em>packages</em> for it.</p>
+<p>The place to find packages and their documentation is <a href="https://package.elm-lang.org/">https://package.elm-lang.org/</a>.</p>
+<p>Note that the standard library can be found here as well.</p>
+<h2><a class="header" href="#sortable-table" id="sortable-table">Sortable Table</a></h2>
+<p>The package we are particularly interested in is <a href="https://package.elm-lang.org/packages/NoRedInk/elm-sortable-table/latest/"><code>NoRedInk/elm-sortable-table</code></a>.</p>
+<p>It promises to</p>
+<blockquote>
+<p>Create sortable tables for data of any shape </p>
+</blockquote>
+<p>Befor we can use we need to install it. We use the following command for that</p>
+<pre><code class="language-sh">elm install NoRedInk/elm-sortable-table
+</code></pre>
+<p>If you are curious you can look in <code>elm.json</code> and see that it list the package as a dependency.</p>
+<h1><a class="header" href="#updating-model" id="updating-model">Updating Model</a></h1>
+<p>Before we can use the sortable table package we first need to update our model. We need to keep track of which column we are currently sorting on.</p>
+<h2><a class="header" href="#multiple-records" id="multiple-records">Multiple Records</a></h2>
+<p>But first we are going to prepare for viewing multiple records. Change <code>Model</code> to hold a <code>List CovidRecord</code> instead of a single <code>CovidRecord</code>.</p>
+<p>Make sure that <code>Workshop.elm</code> still compiles before moving on.</p>
+<h2><a class="header" href="#tablestate" id="tablestate"><code>Table.State</code></a></h2>
+<p>the sortable table package keeps track of the column to sort with the <code>Table.State</code> type. We need to record that state in our model to be able to let the user choose which column to sort.</p>
+<p>Before we can use the <code>Table.State</code> type, we need to import the module.</p>
+<pre><code class="language-elm">import Table
+</code></pre>
+<p>Next add a <code>tableState</code> field to the <code>Model</code> of type <code>Table.State</code>.</p>
+<p>Finally update the <code>init</code> function and provide a <code>tableState</code> with <code>Table.initialSort</code>. The argument to <code>Table.initialSort</code> is the column name for which we want to sort. We still needs to define does, but we will pick <code>&quot;Region&quot;</code>.</p>
+<h2><a class="header" href="#exercises-2" id="exercises-2">Exercises</a></h2>
+<ol>
+<li>Let <code>Model</code> hold multiple <code>CovidRecord</code>s.</li>
+<li>Let <code>Model</code> keep track of the sort state.</li>
+<li>Update the <code>init</code> function so the <code>Table.initialSort</code> is <code>&quot;Region&quot;</code>.</li>
+</ol>
+<h1><a class="header" href="#sortable-table-1" id="sortable-table-1">Sortable Table</a></h1>
+<p>We are now ready to start using sortable tables. We only need to update <code>viewRecords</code>.</p>
+<p><code>viewRecords</code> can delegate the viewing of the records to <code>Table.view</code>. It's signature is</p>
+<pre><code class="language-elm">Table.view : Table.Config data msg -&gt; Table.State -&gt; List data -&gt; Html msg
+</code></pre>
+<p><code>Table.State</code> and the <code>List data</code> we already have. So let's look at configuring our table.</p>
+<h2><a class="header" href="#tableconfig" id="tableconfig"><code>Table.Config</code></a></h2>
+<p>A <code>Table.Config</code> is created with <a href="https://package.elm-lang.org/packages/NoRedInk/elm-sortable-table/latest/Table#config"><code>Table.config</code></a>. It accepts a record with three fields <code>columns</code>, <code>toMsg</code> and <code>toId</code>.</p>
+<p>We will look at each of those in turn.</p>
+<h3><a class="header" href="#columns" id="columns"><code>columns</code></a></h3>
+<p>This fields configures which columns to show in the table. It is a <code>List (Table.Column data msg)</code>.</p>
+<p>There are two convience functions that can create <code>Table.Column</code> that are of interest to us: <code>Table.stringColumn</code> and <code>Table.intColumn</code>.</p>
+<p>Their signatures are </p>
+<pre><code class="language-elm">stringColumn : String -&gt; (data -&gt; String) -&gt; Column data msg
+intColumn : String -&gt; (data -&gt; Int) -&gt; Column data msg
+</code></pre>
+<p>The String argument will be the header of the column as well as the key in the sorting state.</p>
+<p>The next argument is a function type. It determines how to retrieve the value to show in that column from the data. For example, if you wanted to show the region one could pass the following function</p>
+<pre><code class="language-elm">region : CovidRecord -&gt; String
+region { region } =
+    region
+</code></pre>
+<p>Luckily there is a shorthand in Elm. For each definition of a record type there is a corresponding accessor function. In our example that would be <code>.region</code>.</p>
+<p>So to create column to show the cases of a record on would use</p>
+<pre><code class="language-elm">Table.inColumn &quot;Cases&quot; .cases
+</code></pre>
+<h2><a class="header" href="#tomsg" id="tomsg"><code>toMsg</code></a></h2>
+<p>We extended our Model with the current <code>Table.State</code>. In order to be able to change that <code>Table.State</code>, the Elm architecture prescribes that we should send a message</p>
+<p>The <code>toMsg</code> field of the <code>Table.config</code> argument allows you to specify that.</p>
+<p>We haven't introduced messages yet, so now is a good time to do so.</p>
+<pre><code class="language-elm">type Message
+    = SetTableState Table.State
+</code></pre>
+<p>Notice that <code>SetTableState</code> is a function, called a constructor, takes an <code>Table.State</code> and returns a message. It nicely fits the <code>toMsg</code> signature.</p>
+<h2><a class="header" href="#toid" id="toid"><code>toId</code></a></h2>
+<p>Updating the DOM can be relatively slow, especially when huge amounts of data are changed. Elm can speeds things up with a little help. For that Elm needs to identify rows of our table.</p>
+<p>Since each row corresponds with a single record, we need to provide a function that produces a unique identifier. One way could be</p>
+<pre><code class="language-elm">covidRecordId : CovidRecord -&gt; String
+covidRecordId record =
+    record.region
+    ++ (String.fromInt &lt;| record.year)
+    ++ (String.fromInt &lt;| record.month)
+    ++ (String.fromInt &lt;| record.day)
+</code></pre>
+<p>For more information see <a href="https://package.elm-lang.org/packages/elm/html/latest/Html-Keyed"><code>Html.Keyed</code></a></p>
+<h2><a class="header" href="#exercises-3" id="exercises-3">Exercises</a></h2>
+<ol>
+<li>Create a <code>Message</code> type with a <code>SetTableState Table.State</code> entry.</li>
+<li>Extent the update function with the new message entry. Store the new <code>tableState</code> in the model.</li>
+<li>Use <code>Table.view</code> in <code>viewRecords</code>. Note that the signature can be more concrete now.</li>
+<li>Add some more records and enjoy your sortable table.</li>
+</ol>
+<h1><a class="header" href="#decoder" id="decoder">Decoder</a></h1>
+<p>Hardcoding data is great for testing purposes, but we would like to transform some JSON into our data structures.</p>
+<p><code>elm/json</code> is our friend. Don't forget to install it.</p>
+<h2><a class="header" href="#jsondecode" id="jsondecode"><code>Json.Decode</code></a></h2>
+<p>The <a href="https://package.elm-lang.org/packages/elm/json/latest/Json-Decode">documentation</a> for <code>elm/json</code> is extensive, since it also features in <a href="https://guide.elm-lang.org/effects/json.html">the guide</a></p>
+<pre><code class="language-elm">covidRecordDecoder: Decode.Decoder CovidRecord
+covidRecordDecoder =
+    Decode.map6 CovidRecord
+        (Decode.field &quot;day&quot; intFromString) 
+        (Decode.field &quot;month&quot; intFromString) 
+        (Decode.field &quot;year&quot; intFromString)
+        (Decode.field &quot;cases&quot; Decode.int) 
+        (Decode.field &quot;deaths&quot; Decode.int) 
+        (Decode.field &quot;countriesAndTerritories&quot; Decode.string) 
+
+intFromString: Decode.Decoder Int
+intFromString =
+    let
+        mapper =
+            Maybe.withDefault 0 &lt;&lt; String.toInt
+    in
+    Decode.map mapper Decode.string
+</code></pre>
+<h2><a class="header" href="#exercises-4" id="exercises-4">Exercises</a></h2>
+<ol>
+<li>install <code>elm/json</code>.</li>
+<li>Create a <code>Json.Decode.Decoder</code> for <code>List CovidRecord</code>.</li>
+<li>Lookup <a href="https://package.elm-lang.org/packages/elm/json/latest/Json-Decode#decodeString"><code>Json.Decode.decodeString</code></a> and use it to populate your model.</li>
+</ol>
+<h1><a class="header" href="#getting-data" id="getting-data">Getting Data</a></h1>
+<p>We now would like to fetch some real data over the network. We could fetch it directly from the European Centre for Disease Prevention and Control (ECDC), but we don't want to hammer their servers.</p>
+<p>Remember that you downloaded a dataset in the section where we first modeled our data. We will serve from the that JSON from the reactor instead.</p>
+<h2><a class="header" href="#elmhttp" id="elmhttp"><code>elm/http</code></a></h2>
+<p>Before we can make a http call we need to install <code>elm/http</code>. </p>
+<h2><a class="header" href="#command" id="command">Command</a></h2>
+<p>This allows us to make a command to fetch our data set. Make sure that it is found at the root of your workshop project.</p>
+<p>In order to be able to make a command we need to upgrade to <code>Browser.element</code>.</p>
+<h2><a class="header" href="#message" id="message">Message</a></h2>
+<p>When we command for our data set, things can go wrong. The network is unreliable. The Elm Runtime should be able to tell us that information. We create a message for that occasion.</p>
+<p>I suggest <code>Received (Result Http.Error (List CovidRecord))</code>. </p>
+<h2><a class="header" href="#httpget" id="httpget"><code>Http.get</code></a></h2>
+<p>Next we use <code>Http.get</code> to create a command to fetch the data.</p>
+<p><code>Http.get</code> needs a record with two fields</p>
+<h3><a class="header" href="#url" id="url"><code>url</code></a></h3>
+<p>Where should the data be fetch from. This points the GET command in the right direction.</p>
+<p><code>/covid.json</code> in my case, but depending on what you could your data set, this could be different.</p>
+<h3><a class="header" href="#expect" id="expect"><code>expect</code></a></h3>
+<p>What to expect once the data is received.</p>
+<p>We are expecting JSON, so the <code>Http.expectJson</code> function is a good choice. The signature is</p>
+<pre><code class="language-elm">Http.expectJson: (Result Http.Error data -&gt; msg) -&gt; Decoder data -&gt; Expect msg
+</code></pre>
+<p>This is where our new message comes in. Remember that type options are constructors, i.e. function that take its arguments and produce a message.</p>
+<p><code>Htpp.expectJson</code> also needs a decoder. We already have a decoder for <code>CovidRecord</code>. A decoder for <code>List CovidRecord</code> is not far off.</p>
+<pre><code class="language-elm">recordsDecoder: Decode.Decoder (List CovidRecord)
+recordsDecoder =
+    Decode.field &quot;records&quot; (Decode.list (covidRecordDecoder))
+</code></pre>
+<p>And that is it.</p>
+<h2><a class="header" href="#exercises-5" id="exercises-5">Exercises</a></h2>
+<ol>
+<li>Install <code>elm/http</code>.</li>
+<li>Upgrade from <code>Browser.sandbox</code> to <code>Browser.element</code>.</li>
+<li>Extend <code>Message</code> and handle it in <code>update</code>.</li>
+<li>Make a <code>Http.get</code> call.</li>
+<li>Do proper error handling.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
